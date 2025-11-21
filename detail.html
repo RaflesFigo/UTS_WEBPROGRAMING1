@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .detail {
+            padding: 50px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-top: 20px;
+            animation: bounceIn 0.8s ease;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .detail-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            border: none;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-custom:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="detail">
+            <img id="detailImg" src="https://picsum.photos/800/400?random=1" alt="Detail Image" class="detail-img">
+            <h2 id="title">Memuat...</h2>
+            <p id="content">Memuat konten...</p>
+            <button id="modalBtn" class="btn btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#infoModal">Info Tambahan <i class="bi bi-info-circle"></i></button>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Tambahan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalContent">Informasi lebih lanjut akan muncul di sini berdasarkan halaman.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center mt-5 p-4 bg-dark text-white">
+        <p>&copy; 2023 Tech Inovasi. Dibuat dengan ❤️ oleh Tim Kami.</p>
+        @Copyright by 12345678_NamaMahasiswa_TIF RP23 CNS A
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const data = {
+            1: { 
+                title: 'Produk Inovatif Kami', 
+                content: 'Temukan AI canggih yang mengubah bisnis Anda! Dari analisis data real-time hingga prediksi pasar yang akurat, produk kami telah membantu 500+ perusahaan meningkatkan profit hingga 40%. Fitur unggulan: Machine Learning otomatis, integrasi cloud, dan dashboard interaktif. Mulai uji coba gratis hari ini!',
+                img: 'https://picsum.photos/800/400?random=tech1',
+                modal: 'Statistik: 95% akurasi prediksi. Kompatibel dengan semua platform bisnis.'
+            },
+            2: { 
+                title: 'Tim Ahli Kami', 
+                content: 'Bertemu dengan tim multidisiplin kami! Kami punya 50+ ahli dari universitas top dunia seperti Stanford dan MIT, dengan pengalaman 10+ tahun di tech. Spesialisasi: AI, Cybersecurity, dan UX Design. Kami bangga telah berkolaborasi dalam proyek global, termasuk startup unicorn. Mari bergabung tim Anda!',
+                img: 'https://picsum.photos/800/400?random=team1',
+                modal: 'Pengalaman: 200+ proyek selesai. Rating 4.9/5 dari klien.'
+            },
+            3: { 
+                title: 'Hubungi Kami Sekarang', 
+                content: 'Siap wujudkan ide Anda? Email: info@techinovasi.com | Alamat: Jl. Inovasi No. 123, Bandung | Telepon: 022-1234567. Tim kami respons cepat—rata-rata 2 jam! Kirim pesan untuk konsultasi gratis dan penawaran khusus. Jangan ragu, masa depan tech dimulai dari sini!',
+                img: 'https://picsum.photos/800/400?random=contact1',
+                modal: 'Jam Operasional: Senin-Jumat, 9-17 WIB. Follow kami di sosial media untuk update terbaru.'
+            }
+        };
+        if (data[id]) {
+            document.getElementById('title').textContent = data[id].title;
+            document.getElementById('content').textContent = data[id].content;
+            document.getElementById('detailImg').src = data[id].img;
+            document.getElementById('modalContent').textContent = data[id].modal;
+        } else {
+            document.getElementById('title').textContent = 'Informasi Tidak Ditemukan';
+            document.getElementById('content').textContent = 'Maaf, detail untuk ID ini tidak tersedia. Coba kembali ke beranda.';
+        }
+    </script>
+</body>
+</html>
